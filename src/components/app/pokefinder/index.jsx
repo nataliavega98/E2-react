@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-
+import './pokefinder.css'
 export default function Pokefinder() {
 
     const [form, setForm] = useState('')
