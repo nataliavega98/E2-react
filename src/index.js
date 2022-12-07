@@ -1,13 +1,42 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './components/app/App';
 import reportWebVitals from './reportWebVitals';
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Route,
+} from "react-router-dom";
+import Todo from './components/app/todo';
+import App from './components/app';
+import Layout from './components/layout';
+import Pokefinder from './components/app/pokefinder';
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Layout/>,
+    children: [
+      {
+        path: "tareas",
+        element: <Todo />,
+      },
+      {
+        path: "pokefinder",
+        element: <Pokefinder />,
+      },
+      {
+        path: "",
+        element: <App />,
+      },
+    ]
+  },
+]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+        <RouterProvider router={router} />
   </React.StrictMode>
 );
 
